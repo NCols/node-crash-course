@@ -3,11 +3,21 @@
 
 const fs = require('fs');
 const http = require('http');
+// Here we're going to add the lodash requirement, after having installed lodash
+const _  = require('lodash')  // The const name could be anything else than '_', it's just a convention
+
 
 const server = http.createServer((req, res) => {
-    console.log('Request made') // callback that gets executed
-    // console.log(req)
-    console.log(req.url, req.method)
+    // lodash
+    const num = _.random(0,20);
+    console.log(num)
+
+    const greet = _.once(() => {  // lodash has the 'once()' function that allows us to run a specific function only once.
+        console.log('Hello');
+    });
+
+    greet();
+    greet();  // We can see the console only logs 1 'Hello', not two
 
     // set header content type
     res.setHeader('Content-type', 'text/html'); // specify content type being sent back to browser, in this case plain text

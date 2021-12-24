@@ -1,0 +1,21 @@
+We're told about npm, npmjs.com, how to install packages.
+
+Nodemon:
+First one to be installed is nodemon
+Installing packages globally (npm install -g ***)
+With nodemon running, no need to stop and restart server every time.
+
+Package.json:
+Keeps track of any packages we install locally & project details, scripts etc
+If we use any 3 party elements in our project, we should definitely use package.json
+We do that with 'npm init' in our project folder
+
+Installing packages locally (to the project):
+We're going to install a utility called lodash
+npm i --save lodash (the --save arg puts it in project and saves reference to dependencies)
+
+Dependencies:
+If we have the dependencies listed in package.json, but we don't have the 'node_modules' folder containing them, we can just run 'npm install' in our main folder, and it will get the dependencies and install them
+Quite often on github you won't find the node_modules folder, and will have to install dependencies after cloning the repository.
+
+
