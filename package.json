@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/NCols/node-crash-course#readme",
   "dependencies": {
+    "express": "^4.17.2",
     "lodash": "^4.17.21"
   }
 }
