@@ -6,7 +6,7 @@ const Blog = require('./models/blog');
 const app = express();
 
 // connect to MongoDB
-const dbURI = 'mongodb+srv://<usr>:<pwd>@cluster0.deqjh.mongodb.net/ninja-tut?retryWrites=true&w=majority';
+const dbURI = 'mongodb+srv://<usr>:<pwd>@cluster0.deqjh.mongodb.net/<db-name>?retryWrites=true&w=majority';
  // Async process. then() tells what to do when connection ok. We also need to tell the server to start listening only when this is complete.
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => app.listen(3000, 'localhost'))
