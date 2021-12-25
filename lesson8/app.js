@@ -23,7 +23,7 @@ app.listen(3000, 'localhost');
 
 // middleware & static files (like css, images etc)
 app.use(express.static('public')); // allows all of the website to access the files - static files - from the 'public' folder. Without this, all access to files other than the views gets blocked.
-app.use(morgan('tiny'));
+app.use(morgan('tiny')); // logging
 
 
 app.get('/', (req, res) => { 
