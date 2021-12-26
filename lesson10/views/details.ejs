@@ -9,22 +9,22 @@
     <div class="content">
       <p><%= blog.body %></p>
     </div>
-    <a class="delete" data-doc="<%= blog._id %>">delete</a>
+    <a class="delete" data-doc="<%= blog._id %>">delete</a> <!-- 'data-doc' is a custom HTML data type. Use 'data-' then whatever name we want to give to that data type, here 'doc' for the doc id -->
   </div>
 
   <%- include("./partials/footer.ejs") %>
 
-  <script>
-    const trashcan = document.querySelector('a.delete');
+  <script> // For the delete scenario, we actually don't perform the action via node in the backend, but via vanilla javascript in the front-end.
+    const trashcan = document.querySelector('a.delete'); // We grab the anchor tag with the 'delete' class in the html code above
 
-    trashcan.addEventListener('click', (e) => {
-      const endpoint = `/blogs/${trashcan.dataset.doc}`;
+    trashcan.addEventListener('click', (e) => { // 'e' is the event object
+      const endpoint = `/blogs/${trashcan.dataset.doc}`; // ${trashcan.dataset.doc} is the id the of the post, accessed through 'data-doc' from the html code above.
 
-      fetch(endpoint, {
+      fetch(endpoint, { // fetch API, send a DELETE http request to the endpoint /blogs/:id
         method: 'DELETE',
       })
-      .then(response => response.json())
-      .then(data => window.location.href = data.redirect)
+      .then(response => response.json()) // 'response' = res.json() object that was sent back from app.js on the app.delete() call. We then convert response with response.json() again here, to be used by the front-end.
+      .then(data => window.location.href = data.redirect) // 'data' here is the json data that was sent by backend, to response here above, and we access the 'redirect' property of the object (remember our json is { redirect: '/blogs'})
       .catch(err => console.log(err));
     });
     

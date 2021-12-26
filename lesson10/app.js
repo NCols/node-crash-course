@@ -7,7 +7,7 @@ const Blog = require('./models/blog');
 const app = express();
 
 // connect to mongodb & listen for requests
-const dbURI = 'mongodb+srv://<usr>:<pwd>@cluster0.deqjh.mongodb.net/<dbname>?retryWrites=true&w=majority';
+const dbURI = 'mongodb+srv://<usr:pwd>@cluster0.deqjh.mongodb.net/<dbname>?retryWrites=true&w=majority';
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(result => app.listen(3000))
@@ -42,7 +42,7 @@ app.get('/blogs/create', (req, res) => {
 app.get('/blogs', (req, res) => {
   Blog.find().sort({ createdAt: -1 })
     .then(result => {
-      res.render('index', { blogs: result, title: 'All blogs' });
+      res.render('index', { blogs: result, title: 'All blog posts' });
     })
     .catch(err => {
       console.log(err);
